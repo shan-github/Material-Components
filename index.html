@@ -1,0 +1,163 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./components/style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- <script src="./jquery/dist/jquery.min.js"></script> -->
+    <!-- <script defer src="./components/index.js"></script> -->
+    <script defer src="./components/ripple.js"></script>
+    <script defer src="./components/drawer.js"></script>
+    <script defer src="./components/modal.js"></script>
+</head>
+
+<body>
+    <div id="header" class="m-dark">
+        <div style="display:flex;flex-direction:row;justify-content: space-around;width:200px;flex:1">
+            <div id="icon">
+                <span id="ind"></span>
+                <span id="ind"></span>
+                <span id="ind"></span>
+            </div>
+            <p style="flex:1">My Creations</p>
+        </div>
+        <div class='option-container'>
+            <i class="icon material-icons">more_vert</i>
+            <ul class='option'>
+                <li> <i class="material-icons md-dark icons-x-small">settings</i>
+                    Settings</li>
+                <li><i class="material-icons md-dark icons-x-small">face</i>Profile</li>
+                <li><i class="material-icons md-dark icons-x-small">keyboard_tab</i>Log out</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="drawer">
+        <div style='overflow: hidden;position: relative; width:"100%"; height:"30%"'>
+            <img src="zayn.png" width="100%" style='filter: blur(5px)' />
+            <div class="drawer-avatar-div">
+                <img width="70px" height="70px" src="zayn.jpeg" class='drawer-avatar' />
+                <div>
+                    <p>Zayn Malik <i class="material-icons md-light icons-small" id="option">check_circle</i>
+                    </p>
+                    <p>@Zayn</p>
+                </div>
+            </div>
+            <div class="drawer-mask"></div>
+        </div>
+        <ul>
+            <li class='active'>
+                <i class="material-icons md-light icons-small" id="option">home</i>
+                Home
+            </li>
+            <!-- <li link="./pages/mybooks.html">Books</li>
+            <li link="./pages/stack.html">Stack</li>
+            <li link="./pages/canvas.html">Canvas</li>
+            <li link="./pages/track.html">Pointer track</li>
+            <li link="./pages/demo.html">Menu</li> -->
+        </ul>
+    </div>
+    <!-- <div id="content"> </div> -->
+    <div class='content-con'>
+
+
+        <div class="card">
+            <p class='title'>Title</p>
+            <p class='heading'>Heading</p>
+        </div>
+        <div class='card'>
+            <p class='title'>Buttons</p>
+            <p class='heading'>Simple</p>
+            <button class='material-btn m-primary p-10'>Continue</button>
+            <button class='material-btn m-green p-10'>Done</button>
+            <button class='material-btn m-red p-10'>Discard</button>
+            <button class="trans-material-btn primary-text p-10">Transparent</button>
+            <p class='heading'>With image
+                <!-- <i class="material-icons md-dark icons-small">photo</i> -->
+            </p>
+
+            <button class="material-btn p-5 m-primary">
+                Continue
+                <i class="material-icons md-light icons-x-small">keyboard_arrow_right</i>
+            </button>
+            <button class="material-btn p-5 m-green">
+                Done
+                <i class="material-icons md-light icons-x-small">done</i>
+            </button>
+            <button class="material-btn p-5 m-red">
+                Discard
+                <i class="material-icons md-light icons-x-small">clear</i>
+            </button>
+            <button class="trans-material-btn p-5">
+                Transparent
+                <i class="material-icons md-dark icons-x-small">opacity</i>
+            </button>
+            <p class='heading'>Disabled</p>
+            <button class='material-btn m-yellow p-10' disabled>Start</button>
+            <p class='heading'>Rounded</p>
+            <button class='material-btn round m-yellow p-10'>Warn</button>
+            <button class='material-btn round m-primary p-10'>Primary</button>
+            <button class='trans-material-btn round p-10'>Ghost</button>
+
+        </div>
+
+
+
+        <div class='card'>
+            <p class='title'>Toast</p>
+            <p class='heading'>Simple</p>
+            <button class="material-btn p-10 m-dark" onclick="createToast('This is a toast!',5000)">
+                Create a Toast
+                <i class="material-icons md-light icons-x-small" id="option">view_agenda</i>
+            </button><br>
+            <p class='heading'>Custom</p>
+            <button class="material-btn p-5 m-green" onclick="createToast('Saved',2000,'green')">
+                Save
+                <i class="material-icons md-light icons-x-small">done</i>
+            </button>
+            <button class="material-btn p-5 m-red" onclick="createToast('Deleted',2000,'red')">
+                Delete
+                <i class="material-icons md-light icons-x-small">delete</i>
+            </button>
+        </div>
+
+        <div class="card">
+            <p class="title">Modal</p>
+            <button class="material-btn round m-primary p-10"
+                onclick="createModal(['This is a modal','Hello'],()=>{createToast('You clicked ok')})">Show
+                Modal</button>
+            <p class='heading'>Custom</p>
+            <button class='trans-material-btn primary-text p-10'
+                onclick="createModal(['Save changes?'],()=>{createToast('Changes saved',2000,'#2962ff')})">Save</button>
+            <button class='trans-material-btn red-text p-10'
+                onclick="createModal(['Delete 1 item?'],()=>{createToast('1 item Deleted',2000,'red')})">Delete</button>
+        </div>
+
+        <div class='card'>
+            <p class='title'>Snackbar</p>
+            <button class='trans-material-btn p-10' onclick="createSnackBar()">Create Snackbar</button>
+        </div>
+        <div class="card">
+            <p class="title">Icons</p>
+            <i class="icon material-icons md-dark icons-small">done</i>
+            <i class="icon material-icons md-dark icons-small">face</i>
+            <i class="icon material-icons md-dark icons-small" style="color:red">favorite</i>
+        </div>
+    </div>
+
+
+
+
+
+    <div id="maskDiv" />
+    <!-- <div>
+        <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+         </svg>
+    </div> -->
+
+</body>
+
+</html>

@@ -10,35 +10,24 @@ const createRippleCircle = e => {
   //   $(e.currentTarget).hasClass('trans-material-btn')
   // )
   // console.log(e.originalEvent)
-  let bgcolor = 'rgba(0,0,0,0.8)'
+  // console.log($(e.target).css('color'))
   cir.classList.add('cir')
-  cir.style.backgroundColor = bgcolor
+  cir.style.backgroundColor = $(e.target).css('color')
   cir.style.left = e.originalEvent.layerX
   cir.style.top = e.originalEvent.layerY
   return cir
 }
 const hideRipple = elm => {
-  elm
+  const anim=elm
     .animate(
       { opacity: [0.5, 0] },
       { duration: RIPPLE_DURATION, fill: 'forwards' }
     )
-    .finished.then(() => {
-      $(elm).remove()
-    })
+    anim.play()
+    anim.onfinish=()=>{$(elm).remove()}
 }
 
 const onMouseUp = e => {
-  // if ($(e.currentTarget).hasClass('material-btn'))
-  // e.currentTarget.animate(
-  //   {
-  //     boxShadow: [
-  //       '0px 5px 10px 0px rgba(0,0,0,0.4)',
-  //       '0px 2px 3px 0px rgba(0,0,0,0.4)'
-  //     ]
-  //   },
-  //   { duration: 200, fill: 'forwards' }
-  // )
   if ($(e.target).hasClass('cir')) hideRipple(e.target)
   else
     $(e.target)
@@ -52,8 +41,6 @@ const onMouseUp = e => {
             })
         }
       })
-
-  //   }, RIPPLE_DURATION)
 }
 const onMouseDown = e => {
   let cir = createRippleCircle(e)
@@ -61,7 +48,7 @@ const onMouseDown = e => {
   $(e.target).append(cir)
   cir.animate(
     {
-      transform: ['scale(3)', 'scale(' + e.target.clientWidth / 4 + ')'],
+      transform: ['scale(3)', 'scale(' + e.target.clientWidth / 3 + ')'],
       offset: [0, 0.2, 1],
       opacity: [0.4, 0.49, 0.5]
     },
@@ -107,36 +94,7 @@ const dismiss = toast => {
     }
   )
 }
-const Toast = (text = 'Default Text', duration = 1000, color = '#222') => {
-  if (previous != null) document.body.removeChild(previous)
-  let toast = document.createElement('span'),
-    t = document.createElement('p'),
-    btn = document.createElement('button')
-  $(toast).css('background-color', color)
-  $(btn).addClass(['trans-material-btn'])
-  $(btn).text('Dismiss')
-  $(btn).click(e => {
-    dismiss(toast)
-  })
 
-  createRipple($(btn))
-  t.innerText = text
-  $(toast).addClass('toast')
-  toast.append(t)
-  toast.append(btn)
-  $(document.body).prepend(toast)
-  previous = toast
-  $(toast).animate(
-    {
-      bottom: 20,
-      opacity: 1
-    },
-    toastDuration
-  )
-  setTimeout(() => {
-    if (toast.parentNode != null) dismiss(toast)
-  }, duration)
-}
 
 //Icon Ripple
 const hideIconRipple = () => {
@@ -154,7 +112,7 @@ const hideIconRipple = () => {
       )
   })
 }
-
+const createIconRipple=()=>{
 $('.icon')
   .css('padding', $('.icon').height() / 2)
   .css({
@@ -162,7 +120,7 @@ $('.icon')
     width: $('.icon').css('padding'),
     borderRadius: 900
   })
-  .on('click', e => {
+  .on('mousedown', e => {
     hideIconRipple()
     if (!$(e.target.parentElement).hasClass('option-container')) {
       collapseOptions()
@@ -174,4 +132,8 @@ $('.icon')
     // console.log(e.target.parentElement)
     $(e.target).append(ripple)
     ripple.animate({ transform: ['scale(0)', 'scale(1)'] }, { duration: 100 })
+  }).on('mouseup',e=>{
+    // console.log(e.target)
+    $('.icon-ripple').fadeOut('fast')
   })
+}

@@ -1,7 +1,7 @@
 body {
     font-family: 'Roboto';
     user-select: none;
-    background-color: #eee
+    background-color: #000
 }
 button{
     font-family: 'Roboto';
@@ -30,15 +30,13 @@ li{
 
 .content-con{
     align-items: flex-start;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     padding: 10px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
-.content-con div,.content-con button{
-    margin:15px 0px;
-}
+
 .modal{
     z-index: 1000;
     position: fixed;
@@ -53,8 +51,8 @@ li{
 }
 .modal div:nth-child(2){
     position: absolute;
-    bottom:15;
-    right:15;
+    bottom:10%;
+    right:5%;
     align-items: flex-end;
     justify-content:flex-end;
 }
@@ -121,14 +119,14 @@ li{
     border-radius: 3px;
     border: none;
     /* bacground-color: #2962ff; */
-    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.4);
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
     /* color: white; */
     overflow: hidden;
     transition: all 1s ease;
     padding: 5px 10px ;
     position: relative;
     align-items: center;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 .material-btn:disabled{
     background-color: #eee;
@@ -172,6 +170,7 @@ li{
     border-radius: 50px;
     padding: 5px;
     overflow: hidden;
+    opacity: 1;
 }
 
 #ind {
@@ -212,8 +211,11 @@ li{
 }
 
 .active {
-    background-color: #2196f3;
-    color:#fff;
+    background-color: rgba(255,255,255,0.3);
+    color:#212121;
+}
+.active i{
+    color:#212121
 }
 .drawer-avatar{
     border-radius: 50%;
@@ -222,13 +224,11 @@ li{
     /* box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.5) */
 }
 .drawer-avatar-div{
-    position: absolute;
+    position: relative;
     top:0;
     left:0;
     padding-left: 20px;
-    z-index: 201;
     width:100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -258,38 +258,47 @@ li{
     width: 300px;
     display: inline-block;
     visibility: hidden;
-    box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.5);
     transition: left 0.3s ease;
-    background-color: white;
+    background-color: #212121;
     z-index: 950;
+    overflow-y: scroll;
 }
-
+#drawer::-webkit-scrollbar{
+    width:10px
+}
+#drawer::-webkit-scrollbar-thumb{
+    background-color: #111;
+    border-radius: 10px;    
+}
 #drawer li {
     position: relative;
     display: flex;
     list-style-type: none;
     padding: 8px 8px 8px 20px;
     text-align: start;
-    transition: all 0.5s ease;
-    /* border-top-right-radius: 50px; */
-    /* border-bottom-right-radius: 50px; */
-    font-weight: 600;
+    transition: all 0.2s ease;
+    /* font-weight: 600; */
     overflow: hidden;
     margin: 4px 0px;
     align-items: center;
+    border-radius: 5px;
+    color:#fff;
+    cursor: pointer;
 }
 #drawer li i{
     margin-right: 10px;
+    color:#fff
 }
 
-#drawer li:hover {
-    background-color: rgba(0,0,0,0.5);
-    cursor: pointer;
+#drawer li:not(.active):hover {
+    background-color: rgba(255,255,255, 0.1)
 }
 
 #drawer ul {
-    padding: 0px;
+    padding: 10px 0px; 
     overflow: hidden;
+    margin:0px 5px;
 }
 
 #content {
@@ -303,27 +312,41 @@ li{
 
 /*Card*/
 .card{
-    overflow: hidden;
+    /* overflow: hidden; */
     position: relative;
     border-radius: 5px;
     box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4);
     padding:15px;
     background-color: #fff;
     min-width: 250px;
-    min-height: 150px;  
+    min-height: 150px;
+    margin:10px;  
+}
+.card-ripple{
+    overflow: hidden
 }
 .card .title{
     color: #222;
     font-size: 20px;
     margin: 0px;
     padding-bottom: 5px;
-    border-bottom:1px solid rgba(0,0,0,0.2)
+    margin-bottom: 5px;
+    border-bottom:1px solid rgba(0,0,0,0.2);
+}
+.card .title-no-border{
+    color: #222;
+    font-size: 20px;
+    margin: 0px;
+    padding-bottom: 5px;
 }
 .card .heading{
     padding-top: 10px;
-    color: #555;
-    font-size: 15px;
-    margin: 0px;
+    color: #888;
+    font-size: 14px;
+    margin: 5px 0px;
+    flex-wrap: wrap;
+    max-width: 250px;
+    
 }
 
 
@@ -335,6 +358,7 @@ li{
     bottom: 0;
     background-color:rgba(0,0, 0,0);
     transition: background-color ease 0.5s;
+    opacity: 1;
     /* z-index:10000; */
 }
 .ripple-con:hover{
@@ -352,6 +376,7 @@ li{
     padding: 0px 15px 0px 15px;
     color: white;
     left: 40%;
+    right:40%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -364,6 +389,8 @@ li{
 .toast p {
     font-size: 15px;
     color: #fff;
+    flex-wrap: wrap;
+    flex: 1;
 }
 
 .toast button {
@@ -380,13 +407,14 @@ li{
 .icon{
     position: relative;
     border-radius: 100px;
-    padding:20px;
     cursor: pointer;
     transition: background-color ease 0.2s;
+    text-align: center;
 }
 .icon:hover{
     background-color: rgba(0, 0, 0, 0.1)
 }
+
 .icon-ripple{
     border-radius: 100px;
     background-color: rgba(0, 0, 0, 0.3);
@@ -401,10 +429,10 @@ li{
     cursor: pointer;
     border-radius: 100px;   
 }
-/* 
-.option-container:active{
-background-color: rgba(0,0,0,0.5);
-} */
+
+/*
+Options
+*/
 .option {
     display: none;
     position: absolute;
@@ -436,7 +464,7 @@ background-color: rgba(0,0,0,0.5);
     transition: background-color 0.2s ease;
 }
 .option li:hover{
-    background-color: rgba(0, 0, 0, 0.1)
+    background-color: rgba(0, 0, 0, 0.01)
 }
 .spinner {
     animation: rotator 1.4s linear infinite;
@@ -478,8 +506,8 @@ transform: scale(0.9)
     left:40%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    min-width: 200px;
-    padding:0px 10px;
+    min-width: 250px;
+    padding:5px 10px;
     display: flex;
     justify-content: space-between;
     background-color:#222;
@@ -501,6 +529,179 @@ font-size: 15px;
     /* cursor: pointer; */
 }
 
+.pages{
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color: #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+/*
+CheckBox
+*/
+.checkbox{
+    display: flex;
+    align-items: center
+}
+.checkbox{
+cursor: pointer;
+}
+.checkbox input{
+    display: none;
+}
+.checkbox .mark-container:hover{
+    background-color:rgba(29,62,255,0.1);
+}
+.checkbox:hover .mark-container{
+    background-color:rgba(29,62,255,0.1);
+}
+.checkbox ~ .checkbox-red  .checkmark{
+    border-color: red;
+}
+.checkbox-red:hover .mark-container{
+    background-color:rgba(255,0,0,0.1);
+}
+.checkbox ~ .checkbox-yellow  .checkmark{
+    border-color: yellow;
+}
+.checkbox-yellow:hover .mark-container{
+    background-color:rgba(255, 255, 0, 0.3);
+}
+.checkbox ~ .checkbox-yellow .check{
+border-color: #000
+}
+.checkbox ~ .checkbox-primary  .checkmark{
+    border-color: #2962ff;
+}
+.checkbox-primary:hover .mark-container{
+    background-color:rgba(29,62,255,0.1);
+}
+.checkbox .mark-container{
+    position: relative;
+    border-radius: 100px;
+    padding: 10;
+    /* margin-left: 5px; */
+    transition: background-color ease 0.2s; 
+    display: flex;
+    align-items: center;
+    justify-content: center
+}   
+.checkmark{
+position: relative;
+padding:7px;
+border:2px solid #2962ff;
+border-radius: 3px; 
+background-color: #2962ff;
+transition: background-color 0.1s ease;
+display: flex;
+align-items: center;
+justify-content: center
+/* overflow: hidden */
+}
+.checkmark .check{
+    border-width: 0px 2px 2px 0px;
+    padding:2px;
+    top:1;
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;    
+    z-index: 1;
+    height:25%;
+    border-radius: 1px;
+    transform: rotate(45deg);
+    /* background-color: #fff */
+}
+
+
+/*
+Radio Buttom
+*/
+.radio{
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+.radio input{
+    display: none;
+}
+.radio .radio-track{
+    position: relative;
+    margin-left: 10px;
+    width: 25px;
+    padding:5px;
+    background-color: rgba(0, 100, 0, 0.3);
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+}
+.radio .radio-button{
+    position: absolute;
+    padding:10px;
+    left:0;
+    background-color: #1B9A59;
+    border-radius: 100px;
+    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+/*
+Switch
+*/
+.switch{
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+.switch input{
+    display: none;
+}
+.switch .switch-track{
+    position: relative;
+    margin-left: 10px;
+    width: 25px;
+    padding:5px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    transition: background-color ease 0.3s;
+}
+.switch .switch-button{
+    position: absolute;
+    padding:10px;
+    left:0;
+    transition: left ease 0.2s;
+    background-color: #1B9A59;
+    border-radius: 100px;
+    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.switch-button::after{
+    content: '';
+    position: absolute;
+    padding:20px;
+    border-radius: 100px;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color ease 0.1s;
+}
+.switch-button:hover::after{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/*
+Loading
+*/
 @keyframes rotator {
     0% {
         transform: rotate(0deg);
@@ -510,6 +711,7 @@ font-size: 15px;
         transform: rotate(270deg);
     }
 }
+
 
 .path {
     stroke-dasharray: 187;

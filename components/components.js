@@ -35,9 +35,10 @@ const init = () => {
   createCheckMark()
   createSwitch()
   createRadio()
-  $('input').each((i,elm)=> {
-    elm.value=$(elm.parentElement).text().trim()
-    console.log(elm.value)
+  $('input').each((i, elm) => {
+    elm.value = $(elm.parentElement)
+      .text()
+      .trim()
   })
 }
 /**
@@ -295,14 +296,13 @@ const createCheckMark = () => {
   $('.checkbox')
     .append([$(markCont).append($(mark).append(check))])
     .each((i, elm) => {
-
       if ($(elm.children[0]).prop('disabled')) {
         $(elm.children[1].firstChild).css('border-color', '#aaa')
         $(elm.children[1]).css('background', 'none')
-        $(elm).css(
-          'color',
-          $(elm.children[1].firstChild).css('border-top-color')
-        )
+        $(elm).css({
+          color: $(elm.children[1].firstChild).css('border-top-color'),
+          cursor: 'default'
+        })
       }
       if ($(elm.children[0]).prop('checked')) {
         $(elm.children[1].firstChild).css(
@@ -326,9 +326,9 @@ $('.checkbox').on('click', e => {
 
   target.animate(
     {
-      transform: ['scale(1)', 'scale(0.3)', 'scale(1)'],
-      borderRadius: ['2px', '20px', '2px'],
-      offset: [0, 0.2, 1]
+      transform: ['scale(1)', 'scale(0.8)', 'scale(1)'],
+      // borderRadius: ['2px', '5px', '2px'],
+      offset: [0, 0.8, 1]
     },
     { duration: 200, easing: 'ease' }
   )
@@ -336,7 +336,7 @@ $('.checkbox').on('click', e => {
     $(target.firstChild).fadeOut(100)
     $(target).css('background-color', 'rgba(0,0,0,0)')
   } else {
-    $(target.firstChild).fadeIn(100)
+    $(target.firstChild).fadeIn(300)
     $(target).css('background-color', $(target).css('border-top-color'))
   }
 })
@@ -344,13 +344,13 @@ $('.checkbox').on('click', e => {
 /**
  * Switch
  */
-$('.switch').on('click', e => {
+$('.switch').on('change', e => {
   e.stopPropagation()
   const target = e.currentTarget,
     input = target.children[0],
     button = target.children[1].firstElementChild,
     track = target.children[1]
-  // console.log(colorWithAlpha($(button).css('background-color'),0.2))
+  // console.log(input.checked  )
   if (input.checked) {
     $(button).css(
       'left',
@@ -397,7 +397,7 @@ $('.radio').on('click', e => {
   // console.log(typeof input.name)
   if (input.checked) return
   $('input[type="radio"]').each((i, elm) => {
-    if (elm.name == input.name && input.name!='')
+    if (elm.name == input.name && input.name != '')
       if (elm.checked) toggleRadio(elm.parentElement, false)
   })
   toggleRadio(e.currentTarget, true)

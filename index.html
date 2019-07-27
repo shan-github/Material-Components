@@ -5,21 +5,27 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./components/style.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<!--     <script src="./jquery/dist/jquery.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+    <script src="./jquery/dist/jquery.min.js"></script>
     <script defer src="./components/ripple.js"></script>
     <script defer src="./components/components.js"></script>
 </head>
 
 <body>
     <div id="header" class="m-dark">
-        <div style="display:flex;flex-direction:row;justify-content: space-around;width:200px;flex:1">
+        <div style="display:flex;flex-direction:row;justify-content: flex-start;width:200px;flex:1">
             <div id="icon">
                 <span id="ind"></span>
                 <span id="ind"></span>
                 <span id="ind"></span>
             </div>
-            <p style="flex:1;padding-left:10px">My Creations</p>
+            <p style="flex:1;padding-left:10px">My Components</p>
+            <div class='d-flex-row p-10 round' style='align-items: center;border:2px solid rgba(255,255,255,0.1)'>
+                <i class='material-icons icons-x-small md-light'>wb_incandescent</i>
+                <label class="switch">
+                    <input type="checkbox" name='t-dark-mode' checked>
+                </label>
+            </div>
         </div>
         <div class='option-container'>
             <i class="icon material-icons">more_vert</i>
@@ -46,7 +52,7 @@
             <!-- <div class="drawer-mask"></div> -->
         </div>
         <ul>
-            <li class='active' id='intro'>
+            <li class='' id='intro'>
                 <i class="material-icons  icons-small">home</i>
                 Introduction
             </li>
@@ -74,7 +80,7 @@
                 <i class="material-icons icons-small">reorder</i>
                 Options
             </li>
-            <li class='' id='checkbox'>
+            <li class='active' id='checkbox'>
                 <i class="material-icons icons-small">check_box</i>
                 Check Box
             </li>
@@ -85,6 +91,18 @@
             <li class='' id='radio'>
                 <i class="material-icons icons-small">radio_button_on</i>
                 Radio Buttons
+            </li>
+            <li class='' id='accordian'>
+                <i class="material-icons icons-small">keyboard_arrow_down</i>
+                Accordians
+            </li>
+            <li class='' id='popup'>
+                <i class="material-icons icons-small">speaker_notes</i>
+                Popups
+            </li>
+            <li class='' id='input'>
+                <i class="material-icons icons-small">input</i>
+                Inputs
             </li>
         </ul>
     </div>
@@ -120,7 +138,7 @@
         </div>
 
         <div class='pages' id="buttons">
-            <div class='card'>
+            <div class='card card-dark'>
                 <p class='title'>Buttons</p>
                 <p class='heading'>Simple</p>
                 <button class='material-btn m-primary p-10'>Continue</button>
@@ -174,12 +192,13 @@
                 <i class='icon material-icons icons-large' style='color:red'>favorite</i>
                 <i class='icon material-icons icons-large' style='color:#2962ff'>thumb_up</i>
                 <i class='icon material-icons icons-large'>keyboard_arrow_up</i>
+
             </div>
 
         </div>
         <div class='pages' id="toast">
 
-            <div class='card'>
+            <div class='card card-dark'>
                 <p class='title'>Toast</p>
                 <p class='heading'>Simple</p>
                 <button class="material-btn p-5 m-yellow round" onclick="createToast('This is a toast!',5000)">
@@ -204,7 +223,7 @@
         </div>
 
         <div class='pages' id="modal">
-            <div class="card">
+            <div class="card card-dark">
                 <p class="title">Modal</p>
                 <button class="material-btn round m-primary p-10"
                     onclick="createModal(['This is a modal','Hello'],()=>{createToast('You clicked ok')})">Show
@@ -218,24 +237,15 @@
         </div>
 
         <div class='pages' id="snackbar">
-            <div class='card'>
+            <div class='card card-dark'>
                 <p class='title'>Snackbar</p>
                 <button class='trans-material-btn p-10' onclick="createSnackBar()">Create Snackbar</button>
             </div>
         </div>
 
-        <div class='pages'>
-            <div class="card">
-                <p class="title">Icons</p>
-                <i class="icon material-icons md-dark icons-small">done</i>
-                <i class="icon material-icons md-dark icons-small">face</i>
-                <i class="icon material-icons md-dark icons-small" style="color:red">favorite</i>
-            </div>
-
-        </div>
 
         <div class='pages' id='checkbox'>
-            <div class='card'>
+            <div class='card card-dark'>
                 <p class="title">Check Box</p>
                 <div style="display:flex">
                     <label class='checkbox'>Primary
@@ -255,10 +265,13 @@
                     </label>
                 </div>
             </div>
+            <div class='card card-dark'>
+
+            </div>
         </div>
 
         <div class='pages' id='options'>
-            <div class='card'>
+            <div class='card card-dark'>
                 <div class=''>
                     <i class='icon material-icons'>more_vert</i>
                     <!-- <ul class='option'>
@@ -268,8 +281,8 @@
             </div>
         </div>
 
-        <div class="pages" id='switch'>
-            <div class='card'>
+        <div class='pages' id='switch'>
+            <div class='card card-dark'>
                 <p class='title'>Switch</p>
                 <label class='switch'>Enable
                     <input type="checkbox">
@@ -283,7 +296,7 @@
         </div>
 
         <div class='pages' id='radio'>
-            <div class='card'>
+            <div class='card card-dark'>
                 <p class='title'>Radio Buttons</p>
                 <p class='heading'>Default</p>
                 <label class='radio'>Primary
@@ -303,7 +316,7 @@
                 </div>
                 <p style='font-size: 12px' id='gender'>You selected:<b> none</b></p>
 
-              </div>
+            </div>
         </div>
 
     </div>
@@ -320,9 +333,22 @@
 </body>
 <script>
 
-$('input[name="gender"]').on('click',e=>{
-    $('#gender').html(`You selected: <b>${$(e.target).val()}</b>`)
-})
+    $('input[name="gender"]').on('click', e => {
+        $('#gender').html(`You selected: <b>${$(e.target).val()}</b>`)
+    })
 
+    $('input[name="t-dark-mode"]').on('change', e => {
+        $('.card').toggleClass('card-dark')
+        $('#header').toggleClass('m-light')
+        if (e.target.checked) {
+            $('.pages').css('background-color', '#fff')
+            // $('#drawer').css('background-color', '#fff')
+        }
+        else {
+            $('.pages').css('background-color', '#555')
+            // $('#drawer').css('background-color', '#555')
+        }
+    })
 </script>
+
 </html>

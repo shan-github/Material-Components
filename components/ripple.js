@@ -103,7 +103,7 @@ const hideIconRipple = () => {
       $(elm).animate(
         { opacity: 0 },
         {
-          duration: 100,
+          duration: 500,
           easing: 'linear',
           done: () => {
             $(elm).remove()

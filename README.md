@@ -1,9 +1,9 @@
-### Material-Components
-#Original creator: *Shantanu Bahuguna*
+# Material-Components📱
+## Original creator: 👏🏼*Shantanu Bahuguna*👏🏼
 ---
 Welcome to my awsome collection of web material components
-All the components are made from scratch using jquery,css,js and html only
-The website contains:
+**All the components are made from scratch using jquery,css,js and html only**
+Componemts:
 -Cards
 -Buttons
 -Check Boxes

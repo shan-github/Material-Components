@@ -18,13 +18,14 @@ const createRippleCircle = e => {
   return cir
 }
 const hideRipple = elm => {
-  const anim=elm
-    .animate(
-      { opacity: [0.5, 0] },
-      { duration: RIPPLE_DURATION, fill: 'forwards' }
-    )
-    anim.play()
-    anim.onfinish=()=>{$(elm).remove()}
+  const anim = elm.animate(
+    { opacity: [0.5, 0] },
+    { duration: RIPPLE_DURATION, fill: 'forwards' }
+  )
+  anim.play()
+  anim.onfinish = () => {
+    $(elm).remove()
+  }
 }
 
 const onMouseUp = e => {
@@ -89,12 +90,11 @@ const dismiss = toast => {
     },
     toastDuration,
     () => {
-      document.body.removeChild(toast)
+      if (toast) document.body.removeChild(toast)
       previous = null
     }
   )
 }
-
 
 //Icon Ripple
 const hideIconRipple = () => {
@@ -112,28 +112,40 @@ const hideIconRipple = () => {
       )
   })
 }
-const createIconRipple=()=>{
-$('.icon')
-  .css('padding', $('.icon').height() / 2)
-  .css({
-    height: $('.icon').css('padding'),
-    width: $('.icon').css('padding'),
-    borderRadius: 900
-  })
-  .on('mousedown', e => {
-    hideIconRipple()
-    if (!$(e.target.parentElement).hasClass('option-container')) {
-      collapseOptions()
-      e.stopPropagation()
-    }
-    if ($(e.target).hasClass('icon-ripple')) return
-    let ripple = document.createElement('span')
-    $(ripple).addClass('icon-ripple')
-    // console.log(e.target.parentElement)
-    $(e.target).append(ripple)
-    ripple.animate({ transform: ['scale(0)', 'scale(1)'] }, { duration: 100 })
-  }).on('mouseup',e=>{
-    // console.log(e.target)
-    $('.icon-ripple').fadeOut('fast')
-  })
+const createIconRipple = () => {
+  $('.icon')
+    .css({ padding: $('.icon').height() / 2 + 'px', borderRadius: '100px' })
+    .on('mousedown', e => {
+      hideIconRipple()
+
+      if (!$(e.target.parentElement).hasClass('option-container')) {
+        collapseOptions()
+        e.stopPropagation()
+      }
+      if ($(e.target).hasClass('icon-ripple')) return
+      let ripple = document.createElement('span')
+      $(ripple)
+        .addClass('icon-ripple')
+        .css('background-color', colorWithAlpha($(e.target).css('color'), 0.3))
+      $(e.target).append(ripple)
+      ripple.animate({ transform: ['scale(0)', 'scale(1)'] }, { duration: 100 })
+    })
+    .on('mouseup', e => {
+      // console.log(e.target)
+      $('.icon-ripple').fadeOut('fast')
+    })
+    .on('mouseenter',
+      e => {
+        $(e.target).css(
+          'background-color',
+          colorWithAlpha($(e.target).css('color'), 0.2)
+        )
+      }).on('mouseout',
+      e => {
+        $(e.target).css(
+          'background-color',
+          'rgba(0,0,0,0)'
+        )
+      }
+    )
 }

@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./components/style.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<!--     <script src="./jquery/dist/jquery.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+    <script src="./jquery/dist/jquery.min.js"></script>
     <script defer src="./components/ripple.js"></script>
     <script defer src="./components/components.js"></script>
 </head>
@@ -37,17 +37,16 @@
             <div class="drawer-avatar-div">
                 <img width="70px" height="70px" src="pic.jpg" class='drawer-avatar' />
                 <div>
-                    <p style="display: flex;align-items: center">
-                        Shantanu Bahuguna<i class="material-icons md-light icons-x-small" style="margin-left: 10px"
-                            id="option">check_circle</i>
+                    <p style="display: flex;align-items: center;margin-top:5px">
+                        Shantanu Bahuguna <i class="material-icons md-light icons-x-small" id="option">check_circle</i>
                     </p>
-                    <p>@shan-github</p>
+                    <p style='margin:0px'>@shan-github</p>
                 </div>
             </div>
             <!-- <div class="drawer-mask"></div> -->
         </div>
         <ul>
-            <li class='active' id='intro'>
+            <li class='' id='intro'>
                 <i class="material-icons  icons-small">home</i>
                 Introduction
             </li>
@@ -55,11 +54,11 @@
                 <i class="material-icons icons-small">error</i>
                 Modals
             </li>
-            <li id='buttons'>
+            <li class='' id='buttons'>
                 <i class="material-icons icons-small">layers</i>
                 Buttons
             </li>
-            <li id='card'>
+            <li class='' id='card'>
                 <i class="material-icons icons-small">call_to_action</i>
                 Cards
             </li>
@@ -71,30 +70,37 @@
                 <i class="material-icons icons-small">view_day</i>
                 Toast
             </li>
-            <li class='' id='checkbox'>
-                <i class="material-icons icons-small">check_box</i>
-                Check Box
-            </li>
             <li class='' id='options'>
                 <i class="material-icons icons-small">reorder</i>
                 Options
             </li>
+            <li class='active' id='checkbox'>
+                <i class="material-icons icons-small">check_box</i>
+                Check Box
+            </li>
             <li class='' id='switch'>
                 <i class="material-icons icons-small">toggle_on</i>
                 Switch
+            </li>
+            <li class='' id='radio'>
+                <i class="material-icons icons-small">radio_button_on</i>
+                Radio Buttons
             </li>
         </ul>
     </div>
     <!-- <div id="content"> </div> -->
     <div class='content-con'>
         <div class='pages' id='intro'>
-            <p style='color:#fff;font-size: 30px;font-family: Forte'>
-                In Development
-            </p>
+            <div style='align-self: center;align-items: center'>
+                <p
+                    style='color:#fff;font-size: 30px;font-family: Forte;display: flex;flex-direction: column;align-items: center'>
+                    In Development<i class='material-icons icons-large'>report_problem</i>
+                </p>
+            </div>
         </div>
         <div class='pages' id="card">
             <div class="card" style="overflow: hidden;padding-bottom: 0px">
-                <img src="./zayn.png" style="width: 280px;height: 200px;margin-bottom:20px;border-radius: 5px;" />
+                <img src="./pic.jpg" style="width: 280px;height: 200px;margin-bottom:20px;border-radius: 5px;" />
                 <p class='title-no-border'>Title</p>
                 <p class='heading'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt
@@ -148,6 +154,26 @@
                 <button class='material-btn round m-primary p-10'>Primary</button>
                 <button class='trans-material-btn round p-10'>Ghost</button>
 
+                <p class='heading'>Icon Buttons(icons-x-small)</p>
+                <i class='icon material-icons icons-x-small'>face</i>
+                <i class='icon material-icons icons-x-small' style='color:red'>favorite</i>
+                <i class='icon material-icons icons-x-small' style='color:#2962ff'>thumb_up</i>
+                <i class='icon material-icons icons-x-small'>keyboard_arrow_up</i>
+                <p class='heading'>Icon Buttons(icons-small)</p>
+                <i class='icon material-icons icons-small'>face</i>
+                <i class='icon material-icons icons-small' style='color:red'>favorite</i>
+                <i class='icon material-icons icons-small' style='color:#2962ff'>thumb_up</i>
+                <i class='icon material-icons icons-small'>keyboard_arrow_up</i>
+                <p class='heading'>Icon Buttons(icons-medium)</p>
+                <i class='icon material-icons icons-medium'>face</i>
+                <i class='icon material-icons icons-medium' style='color:red'>favorite</i>
+                <i class='icon material-icons icons-medium' style='color:#2962ff'>thumb_up</i>
+                <i class='icon material-icons icons-medium'>keyboard_arrow_up</i>
+                <p class='heading'>Icon Buttons(icons-large)</p>
+                <i class='icon material-icons icons-large'>face</i>
+                <i class='icon material-icons icons-large' style='color:red'>favorite</i>
+                <i class='icon material-icons icons-large' style='color:#2962ff'>thumb_up</i>
+                <i class='icon material-icons icons-large'>keyboard_arrow_up</i>
             </div>
 
         </div>
@@ -216,10 +242,16 @@
                         <input type="checkbox" />
                     </label>
                     <label class='checkbox checkbox-red'>Red
-                        <input type="checkbox" />
+                        <input type="checkbox" value='haahhaha' />
                     </label>
                     <label class='checkbox checkbox-yellow'>Yellow
                         <input type="checkbox" />
+                    </label>
+                    <label class='checkbox checkbox-info'>Info
+                        <input type="checkbox" />
+                    </label>
+                    <label class='checkbox checkbox-primary'>Disabled
+                        <input checked disabled type="checkbox" />
                     </label>
                 </div>
             </div>
@@ -242,8 +274,38 @@
                 <label class='switch'>Enable
                     <input type="checkbox">
                 </label>
+                <br>
+                <label class='switch'>
+                    <input type="checkbox">
+                </label>
+
             </div>
         </div>
+
+        <div class='pages' id='radio'>
+            <div class='card'>
+                <p class='title'>Radio Buttons</p>
+                <p class='heading'>Default</p>
+                <label class='radio'>Primary
+                    <input type='radio'>
+                </label>
+                <p class='heading'>Select Your Gender</p>
+                <div class='d-flex-row' style='justify-content: space-between'>
+                    <label class='radio'>Male
+                        <input type='radio' name='gender' checked>
+                    </label>
+                    <label class='radio'>Female
+                        <input type='radio' name='gender'>
+                    </label>
+                    <label class='radio'>Other
+                        <input type='radio' name='gender'>
+                    </label>
+                </div>
+                <p style='font-size: 12px' id='gender'>You selected:<b> none</b></p>
+
+              </div>
+        </div>
+
     </div>
 
 
@@ -256,5 +318,11 @@
     </div> -->
 
 </body>
+<script>
 
+$('input[name="gender"]').on('click',e=>{
+    $('#gender').html(`You selected: <b>${$(e.target).val()}</b>`)
+})
+
+</script>
 </html>

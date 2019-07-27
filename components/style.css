@@ -11,6 +11,10 @@ li{
     position: relative;
    overflow: hidden;
 }
+
+/*
+---------------------Header-------------------
+*/
 #header {
     z-index: 100;
     height: 60px;
@@ -28,6 +32,7 @@ li{
     transition:top ease 0.5s;
 }
 
+
 .content-con{
     align-items: flex-start;
     /* justify-content: space-around; */
@@ -37,6 +42,9 @@ li{
     flex-wrap: wrap;
 }
 
+/*
+---------------------Modal-------------------
+*/
 .modal{
     z-index: 1000;
     position: fixed;
@@ -79,6 +87,9 @@ li{
     visibility: hidden;
 }
 
+/*
+---------------------Colors-------------------
+*/
 .primary-text{
     color: #2962ff;
 }
@@ -112,6 +123,10 @@ li{
 .m-dark *{
     color:#fff;
 }
+
+/*
+---------------------Material Buttons-------------------
+*/
 .material-btn {
     display: inline-flex;
     /* flex-direction: row; */
@@ -145,12 +160,7 @@ li{
     outline: none;
     align-items: center;
 }
-.p-5{
-    padding:5px 10px
-}
-.p-10{
-    padding:10px 15px
-}
+
 
 .floating-btn {
     cursor: pointer;
@@ -173,6 +183,9 @@ li{
     opacity: 1;
 }
 
+/*
+---------------------Indicators-------------------
+*/
 #ind {
     height: 0px;
     border: 1px solid white;
@@ -189,6 +202,9 @@ li{
     width: 10px;
 }
 
+/*
+---------------------Icon-------------------
+*/
 #icon {
     display: flex;
     border-radius: 30px;
@@ -210,6 +226,9 @@ li{
     background-color: rgba(0, 0, 0, 0.1)
 }
 
+/*
+---------------------Drawer-------------------
+*/
 .active {
     background-color: rgba(255,255,255,0.3);
     color:#212121;
@@ -262,7 +281,7 @@ li{
     transition: left 0.3s ease;
     background-color: #212121;
     z-index: 950;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 #drawer::-webkit-scrollbar{
     width:10px
@@ -310,8 +329,9 @@ li{
     visibility: hidden;
 }
 
-/*Card*/
-.card{
+/*
+---------------------Card-------------------
+*/.card{
     /* overflow: hidden; */
     position: relative;
     border-radius: 5px;
@@ -336,7 +356,7 @@ li{
 .card .title-no-border{
     color: #222;
     font-size: 20px;
-    margin: 0px;
+    margin: 0px 0px 0px 0px;
     padding-bottom: 5px;
 }
 .card .heading{
@@ -349,7 +369,9 @@ li{
     
 }
 
-
+/*
+---------------------Ripple-------------------
+*/
 .ripple-con{
     position: absolute;
     left: 0;
@@ -367,6 +389,10 @@ li{
 .ripple-con:active{
     background-color:rgba(0,0, 0,0);
 }
+
+/*
+---------------------Toast-------------------
+*/
 .toast {
     min-width: 250px;
     position: fixed;
@@ -404,35 +430,35 @@ li{
     overflow: hidden;
 }
 
+/*
+---------------------Icon-------------------
+*/
 .icon{
     position: relative;
     border-radius: 100px;
     cursor: pointer;
     transition: background-color ease 0.2s;
-    text-align: center;
-}
-.icon:hover{
-    background-color: rgba(0, 0, 0, 0.1)
+   text-align: center
 }
 
 .icon-ripple{
     border-radius: 100px;
-    background-color: rgba(0, 0, 0, 0.3);
     position: absolute;
     top:0;
     left:0;
     right:0;
     bottom: 0;
 }
+
+
+/*
+---------------------Options-------------------
+*/
 .option-container{
     position: relative;
     cursor: pointer;
     border-radius: 100px;   
 }
-
-/*
-Options
-*/
 .option {
     display: none;
     position: absolute;
@@ -466,40 +492,15 @@ Options
 .option li:hover{
     background-color: rgba(0, 0, 0, 0.01)
 }
+
 .spinner {
     animation: rotator 1.4s linear infinite;
 }
-.material-icons{
-border-radius: 20px;
-}
-.mh-5{
-    margin:0px 5px;
-}
-.mh-10{
-    margin:0px 10px;
-}
-.ml{
-    margin-left:10px;
-}
-.mr{
-    margin-right: 10px;
-}
-.icons-x-small{
-    transform: scale(0.6)
-}
-.icons-small{
-transform: scale(0.9)
-}
-.icons-medium{
-    transform: scale(1.5)
-    }
-    .icons-large{
-        transform: scale(2)
-        }
-.round{
-    border-radius:100px;
-}       
 
+     
+/*
+---------------------SnackBar-------------------
+*/
 .snackbar{
     position:fixed;
     bottom:-100;
@@ -520,15 +521,29 @@ padding:10px 5px;
 margin:0px;
 font-size: 15px;
 }
-.material-icons.md-light {
+
+/*
+---------------------Material Icons-------------------
+*/
+.material-icons{
+    border-radius: 20px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.material-icons .md-light {
     color: rgba(255, 255, 255, 1);
     /* cursor: pointer; */
 }
-.material-icons.md-dark {
+.material-icons .md-dark {
     color: rgba(0, 0, 0, 1);
     /* cursor: pointer; */
 }
 
+/*
+---------------------Pages-------------------
+*/
 .pages{
     position: absolute;
     top:0;
@@ -538,12 +553,13 @@ font-size: 15px;
     background-color: #555;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     opacity: 1;
+    overflow: auto;
 }
 
 /*
-CheckBox
+---------------------CheckBox-------------------
 */
 .checkbox{
     display: flex;
@@ -568,10 +584,10 @@ cursor: pointer;
     background-color:rgba(255,0,0,0.1);
 }
 .checkbox ~ .checkbox-yellow  .checkmark{
-    border-color: yellow;
+    border-color: rgb(255,200,0);
 }
 .checkbox-yellow:hover .mark-container{
-    background-color:rgba(255, 255, 0, 0.3);
+    background-color:rgba(255, 200, 0, 0.2);
 }
 .checkbox ~ .checkbox-yellow .check{
 border-color: #000
@@ -581,6 +597,12 @@ border-color: #000
 }
 .checkbox-primary:hover .mark-container{
     background-color:rgba(29,62,255,0.1);
+}
+.checkbox ~ .checkbox-info  .checkmark{
+    border-color: #1B9A59;
+}
+.checkbox-info:hover .mark-container{
+    background-color:rgba(26,145,84,0.1);
 }
 .checkbox .mark-container{
     position: relative;
@@ -618,9 +640,8 @@ justify-content: center
     /* background-color: #fff */
 }
 
-
 /*
-Radio Buttom
+---------------------Radio Buttons-------------------
 */
 .radio{
     cursor: pointer;
@@ -631,28 +652,37 @@ Radio Buttom
 .radio input{
     display: none;
 }
-.radio .radio-track{
+.radio .radio-circle{
     position: relative;
     margin-left: 10px;
-    width: 25px;
-    padding:5px;
-    background-color: rgba(0, 100, 0, 0.3);
+    padding:6px;
+    border: 2px solid #2962ff;
     border-radius: 100px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    /* overflow: hidden; */
+}
+.radio .radio-circle::after{
+content:'';
+padding:15px;
+border-radius: 20px;
+position: absolute;
+transition: background-color ease 0.2s; 
+}
+.radio .radio-circle:hover::after{
+    background-color: rgba(0,0,0,0.1);
 }
 .radio .radio-button{
     position: absolute;
-    padding:10px;
-    left:0;
-    background-color: #1B9A59;
+    padding:4px;
+    background-color: #2962ff;
     border-radius: 100px;
-    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.3);
     overflow: hidden;
 }
 
 /*
-Switch
+---------------------Switch-------------------
 */
 .switch{
     cursor: pointer;
@@ -678,10 +708,10 @@ Switch
     position: absolute;
     padding:10px;
     left:0;
-    transition: left ease 0.2s;
-    background-color: #1B9A59;
+    transition: left ease 0.1s;
+    background-color: #2962ff;
     border-radius: 100px;
-    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -696,11 +726,11 @@ Switch
     transition: background-color ease 0.1s;
 }
 .switch-button:hover::after{
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 /*
-Loading
+---------------------Loading-------------------
 */
 @keyframes rotator {
     0% {
@@ -760,7 +790,9 @@ Loading
     }
 }
 
-
+/*
+---------------------Responsive stuff-------------------
+*/
 @media only screen and (max-height:600px){
     .modal{
         top:35%;
@@ -852,17 +884,64 @@ Loading
     font-size: 20px; 
     }
 }
- /* Extra small devices (phones, 600px and down) */
- @media only screen and (max-width: 600px) {}
 
- /* Small devices (portrait tablets and large phones, 600px and up) */
+ /* @media only screen and (max-width: 600px) {}
+
  @media only screen and (min-width: 600px) {}
  
- /* Medium devices (landscape tablets, 768px and up) */
  @media only screen and (min-width: 768px) {}
  
- /* Large devices (laptops/desktops, 992px and up) */
  @media only screen and (min-width: 992px) {}
  
- /* Extra large devices (large laptops and desktops, 1200px and up) */
- @media only screen and (min-width: 1200px) {} 
+ @media only screen and (min-width: 1200px) {}  */
+
+ /*
+-------------------Utils------------------
+*/
+.mt-5{
+    margin-top: 5px;
+}
+.mt-10{
+    margin-top: 10px;
+}
+.mh-5{
+    margin:0px 5px;
+}
+.mh-10{
+    margin:0px 10px;
+}
+.ml{
+    margin-left:10px;
+}
+.mr{
+    margin-right: 10px;
+}
+.icons-x-small{
+    font-size: 15px;
+}
+.icons-small{
+font-size: 20px;
+}
+.icons-medium{
+    font-size: 25px;
+    }
+.icons-large{
+font-size: 30px;
+}
+.round{
+    border-radius:100px;
+}  
+.p-5{
+    padding:5px 10px
+}
+.p-10{
+    padding:10px 15px
+}
+.d-flex-row{
+    display: flex;
+    flex-direction: row;
+}
+.d-flex-column{
+    display: flex;
+    flex-direction:column;
+}

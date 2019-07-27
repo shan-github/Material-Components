@@ -23,6 +23,7 @@ $(document).ready(() => {
   $(document.body).css('padding-top', $('#header').height())
   $(window).scroll(() => {
     let scrollY = $(window).scrollTop()
+    console.log(scrollY)
     if (scrollY > prevScrollY) $('#header').css({ top: -$('#header').height() })
     else $('#header').css({ top: 0 })
     prevScrollY = scrollY
@@ -32,16 +33,24 @@ $(document).ready(() => {
 
 const init = () => {
   createCheckMark()
-  $('.checkbox input').prop('checked', false)
-  $('.switch input').prop('checked', false)
   createSwitch()
+  createRadio()
+  $('input').each((i,elm)=> {
+    elm.value=$(elm.parentElement).text().trim()
+    console.log(elm.value)
+  })
 }
 /**
- * 
- * @param {String} color 
- * @param {number} alpha 
+ *
+ * @param {String} color
+ * @param {number} alpha
  */
-const colorWithAlpha=(color,alpha)=>`rgba${color.slice(3,-1)},${alpha})`
+const colorWithAlpha = (color, alpha) => {
+  let codes = color.split(',')
+  return `rgba(${codes[0].split('(')[1]},${codes[1]},${
+    codes[2].split(')')[0]
+  },${alpha})`
+}
 
 /**
  * Header
@@ -267,7 +276,7 @@ const createSnackBar = (text = 'Snackbar') => {
 /**
  * Pages
  */
-$('.pages').css('padding-top', $('#header').height())
+$('.pages').css('padding-top', $('#header').height() + 'px')
 
 /**
  * Check Box
@@ -283,14 +292,38 @@ const createCheckMark = () => {
 
   $(mark).css('background-color', 'rgba(0,0,0,0)')
   $(check).css('display', 'none')
-  $('.checkbox').append([$(markCont).append($(mark).append(check))])
+  $('.checkbox')
+    .append([$(markCont).append($(mark).append(check))])
+    .each((i, elm) => {
+
+      if ($(elm.children[0]).prop('disabled')) {
+        $(elm.children[1].firstChild).css('border-color', '#aaa')
+        $(elm.children[1]).css('background', 'none')
+        $(elm).css(
+          'color',
+          $(elm.children[1].firstChild).css('border-top-color')
+        )
+      }
+      if ($(elm.children[0]).prop('checked')) {
+        $(elm.children[1].firstChild).css(
+          'background-color',
+          $(elm.children[1].firstChild).css('border-top-color')
+        )
+        $(elm.children[1].firstChild.firstChild).fadeIn(100)
+      }
+    })
 }
 
 $('.checkbox').on('click', e => {
   e.stopPropagation()
+
   const target = e.currentTarget.children[1].firstChild,
     input = e.currentTarget.children[0]
-  // console.log(input.checked+' '+e.bubbles)
+
+  // console.log($(input).val().length)
+
+  if ($(input).prop('disabled')) return
+
   target.animate(
     {
       transform: ['scale(1)', 'scale(0.3)', 'scale(1)'],
@@ -299,7 +332,6 @@ $('.checkbox').on('click', e => {
     },
     { duration: 200, easing: 'ease' }
   )
-
   if (!input.checked) {
     $(target.firstChild).fadeOut(100)
     $(target).css('background-color', 'rgba(0,0,0,0)')
@@ -310,7 +342,7 @@ $('.checkbox').on('click', e => {
 })
 
 /**
- * Radio Buttons
+ * Switch
  */
 $('.switch').on('click', e => {
   e.stopPropagation()
@@ -319,7 +351,7 @@ $('.switch').on('click', e => {
     button = target.children[1].firstElementChild,
     track = target.children[1]
   // console.log(colorWithAlpha($(button).css('background-color'),0.2))
-  if (input.checked){
+  if (input.checked) {
     $(button).css(
       'left',
       $(track).width() -
@@ -327,11 +359,14 @@ $('.switch').on('click', e => {
           .css('padding-top')
           .split('p')[0]
     )
-    $(track).css('background-color',colorWithAlpha($(button).css('background-color'),0.5))
+    $(track).css(
+      'background-color',
+      colorWithAlpha($(button).css('background-color'), 0.5)
+    )
+  } else {
+    $(button).css('left', 0)
+    $(track).css('background-color', 'rgba(0,0,0,0.2)')
   }
-  else {$(button).css('left', 0)
-  $(track).css('background-color','rgba(0,0,0,0.2)')
-}
 })
 const createSwitch = () => {
   let track = document.createElement('span'),
@@ -339,4 +374,58 @@ const createSwitch = () => {
   $(track).addClass('switch-track')
   $(button).addClass('switch-button')
   $('.switch').append($(track).append($(button)))
+}
+
+/**
+ * Radio Buttons
+ */
+const createRadio = () => {
+  let radio = document.createElement('span'),
+    button = document.createElement('span')
+  $(radio).addClass('radio-circle')
+  $(button).addClass('radio-button')
+  $('.radio').append($(radio).append($(button)))
+  $('input[type="radio"]').each((i, elm) => {
+    elm.checked
+      ? toggleRadio(elm.parentElement, true)
+      : toggleRadio(elm.parentElement, false)
+  })
+}
+$('.radio').on('click', e => {
+  e.stopPropagation()
+  const input = e.currentTarget.children[0]
+  // console.log(typeof input.name)
+  if (input.checked) return
+  $('input[type="radio"]').each((i, elm) => {
+    if (elm.name == input.name && input.name!='')
+      if (elm.checked) toggleRadio(elm.parentElement, false)
+  })
+  toggleRadio(e.currentTarget, true)
+})
+/**
+ * @param {Boolean} toggleVal
+ * @param {HTMLElement} radio
+ */
+const toggleRadio = (radio, toggleVal) => {
+  const circle = radio.children[1],
+    button = radio.children[1].firstChild,
+    duration = 200
+  if (toggleVal) {
+    circle.animate(
+      {
+        transform: ['scale(1)', 'scale(0.8)', 'scale(1)'],
+        offset: [0, 0.8, 1]
+      },
+      { duration, easing: 'ease' }
+    )
+    button.animate(
+      { transform: ['scale(0)', 'scale(2)', 'scale(1)'], opacity: [0, 0.9, 1] },
+      { duration, fill: 'forwards' }
+    )
+  } else {
+    button.animate(
+      { transform: ['scale(1)', 'scale(2)'], opacity: [1, 0] },
+      { duration, fill: 'forwards' }
+    )
+  }
 }

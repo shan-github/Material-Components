@@ -4,14 +4,14 @@
 Welcome to my awsome collection of web material components
 **All the components are made from scratch using jquery,css,js and html only**
 Componemts:
--Cards
--Buttons
--Check Boxes
--Radio Buttons
--Modals
--Toasts and Snackbars
--Switch
--more awsome components to be added...
+- Cards
+- Buttons
+- Check Boxes
+- Radio Buttons
+- Modals
+- Toasts and Snackbars
+- Switch
+- more awsome components to be added...
 
 
-[**Link to website:**]( https://shan-github.github.io/Material-Components/)
+👉Experience the adventure [**Click here**]( https://shan-github.github.io/Material-Components/)

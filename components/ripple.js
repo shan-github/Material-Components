@@ -49,7 +49,7 @@ const onMouseDown = e => {
   $(e.target).append(cir)
   cir.animate(
     {
-      transform: ['scale(3)', 'scale(' + e.target.clientWidth / 3 + ')'],
+      transform: ['scale('+e.target.clientWidth *0.05+')', 'scale(' + e.target.clientWidth / 3 + ')'],
       offset: [0, 0.2, 1],
       opacity: [0.4, 0.49, 0.5]
     },

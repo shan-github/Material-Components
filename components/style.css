@@ -241,12 +241,12 @@ li{
 ---------------------Drawer-------------------
 */
 .active {
-    background-color: rgba(255,255,255,0.3);
-    color:#212121;
+    background-color: rgba(150,150,150,0.5);
+    /* color:#212121; */
 }
-.active i{
+/* .active i{
     color:#212121
-}
+} */
 .drawer-avatar{
     border-radius: 50%;
     margin-top: 20px;
@@ -290,7 +290,7 @@ li{
     visibility: hidden;
     box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.5);
     transition: left 0.3s ease;
-    background-color: #212121;
+    /* background-color: #212121; */
     z-index: 950;
     overflow-y: auto;
 }
@@ -313,12 +313,12 @@ li{
     margin: 4px 0px;
     align-items: center;
     border-radius: 5px;
-    color:#fff;
+    /* color:#fff; */
     cursor: pointer;
 }
 #drawer li i{
     margin-right: 10px;
-    color:#fff
+    /* color:#fff */
 }
 
 #drawer li:not(.active):hover {
@@ -752,6 +752,42 @@ transition: background-color ease 0.2s;
     background-color: rgba(0, 0, 0, 0.1);
 }
 
+
+/*
+Accordians
+*/
+.collapsible{
+    overflow: hidden;
+    /* padding: 10px; */
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    border:2px solid rgba(150,150,150,0.1);
+    transition: height ease 0.2s;
+    /* height: 30px;    */
+}
+.collapsible .title{
+    position: relative;
+    /* overflow: hidden; */
+margin: 0px;
+cursor: pointer;
+padding:5px 0px 5px 10px;
+width: auto;
+font-size: 15px;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+text-align: center;
+/* background-color: #1B9A59 */
+}
+.collapsible .content{
+    padding:10px;
+    /* font-size: 20px; */
+}
+/* .accordian .acc-title:hover{
+background-color:rgba(255,255,255,0.1);
+} */
 /*
 ---------------------Loading-------------------
 */

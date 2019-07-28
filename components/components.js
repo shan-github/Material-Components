@@ -15,7 +15,8 @@ $(document).ready(() => {
     $('.trans-material-btn'),
     $('.option li'),
     $('#icon'),
-    $('#drawer li')
+    $('#drawer li'),
+    $('.collapsible .title')
     // $('.switch-button')
     // $('.card')
   ])
@@ -35,6 +36,7 @@ const init = () => {
   createCheckMark()
   createSwitch()
   createRadio()
+  createAccordians()
   $('input').each((i, elm) => {
     elm.value = $(elm.parentElement)
       .text()
@@ -347,11 +349,25 @@ $('.checkbox').on('click', e => {
 $('.switch').on('change', e => {
   e.stopPropagation()
   const target = e.currentTarget,
-    input = target.children[0],
-    button = target.children[1].firstElementChild,
-    track = target.children[1]
+    input = target.children[0]
   // console.log(input.checked  )
-  if (input.checked) {
+  toggleSwitch(target, input.checked)
+})
+const createSwitch = () => {
+  let track = document.createElement('span'),
+    button = document.createElement('span')
+  $(track).addClass('switch-track')
+  $(button).addClass('switch-button')
+  $('.switch')
+    .append($(track).append($(button)))
+    .each((i, elm) => {
+      toggleSwitch(elm, elm.children[0].checked)
+    })
+}
+const toggleSwitch = ({ children }, checked) => {
+  const button = children[1].firstElementChild,
+    track = children[1]
+  if (checked) {
     $(button).css(
       'left',
       $(track).width() -
@@ -367,15 +383,7 @@ $('.switch').on('change', e => {
     $(button).css('left', 0)
     $(track).css('background-color', 'rgba(0,0,0,0.2)')
   }
-})
-const createSwitch = () => {
-  let track = document.createElement('span'),
-    button = document.createElement('span')
-  $(track).addClass('switch-track')
-  $(button).addClass('switch-button')
-  $('.switch').append($(track).append($(button)))
 }
-
 /**
  * Radio Buttons
  */
@@ -429,3 +437,47 @@ const toggleRadio = (radio, toggleVal) => {
     )
   }
 }
+
+/**
+ * Accordians
+ */
+const createAccordians = () => {
+  $('.collapsible .title')
+    .append(
+      $(document.createElement('i'))
+        .addClass('icon material-icons icons-small md-light')
+        .text('keyboard_arrow_down')
+    )
+    .prop('toggle', false)
+  $('.collapsible').height(
+    $('.collapsible .title')
+      .css('padding-top')
+      .split('p')[0] * 10
+  )
+}
+$('.collapsible .title').on('click', e => {
+  const parent = e.currentTarget.parentElement,
+  toggle=!$(parent).prop('toggle')
+  // console.log($(parent.children[0]).css('padding-top'))
+  $(parent).prop('toggle',toggle)
+
+  if (toggle) {
+    $(parent).height(
+      $(parent.children[0]).height() + $(parent.children[1]).height() + 30
+    )
+    e.currentTarget.children[0].animate(
+      { transform: ['rotate(0deg)', 'rotate(180deg)'] },
+      { duration: 200, fill: 'forwards' }
+    )
+  } else {
+    $(parent).height(
+      $(e.currentTarget)
+        .css('padding-top')
+        .split('p')[0] * 10
+    )
+    e.currentTarget.children[0].animate(
+      { transform: ['rotate(180deg)', 'rotate(0deg)'] },
+      { duration: 200, fill: 'forwards' }
+    )
+  }
+})

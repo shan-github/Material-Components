@@ -36,7 +36,7 @@ const init = () => {
   createCheckMark()
   createSwitch()
   createRadio()
-  createAccordians()
+  createCollapsible()
   $('input').each((i, elm) => {
     elm.value = $(elm.parentElement)
       .text()
@@ -441,29 +441,33 @@ const toggleRadio = (radio, toggleVal) => {
 /**
  * Accordians
  */
-const createAccordians = () => {
+const createCollapsible = () => {
   $('.collapsible .title')
     .append(
       $(document.createElement('i'))
-        .addClass('icon material-icons icons-small md-light')
+        .addClass('material-icons icons-small md-light')
         .text('keyboard_arrow_down')
     )
     .prop('toggle', false)
   $('.collapsible').height(
     $('.collapsible .title')
       .css('padding-top')
-      .split('p')[0] * 10
+      .split('p')[0] * 2
   )
 }
 $('.collapsible .title').on('click', e => {
   const parent = e.currentTarget.parentElement,
-  toggle=!$(parent).prop('toggle')
-  // console.log($(parent.children[0]).css('padding-top'))
-  $(parent).prop('toggle',toggle)
+    toggle = !$(parent).prop('toggle')
+  // console.log()
+  $(parent).prop('toggle', toggle)
 
   if (toggle) {
     $(parent).height(
-      $(parent.children[0]).height() + $(parent.children[1]).height() + 30
+      +$(parent.children[0])
+        .css('padding-top')
+        .split('p')[0] *
+        3 +
+        $(parent.children[1]).height()
     )
     e.currentTarget.children[0].animate(
       { transform: ['rotate(0deg)', 'rotate(180deg)'] },
@@ -473,7 +477,7 @@ $('.collapsible .title').on('click', e => {
     $(parent).height(
       $(e.currentTarget)
         .css('padding-top')
-        .split('p')[0] * 10
+        .split('p')[0] * 2
     )
     e.currentTarget.children[0].animate(
       { transform: ['rotate(180deg)', 'rotate(0deg)'] },

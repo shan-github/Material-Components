@@ -262,14 +262,13 @@ li{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    }
+    margin-bottom: 20px    
+}
 .drawer-avatar-div div p:nth-child(1){
-    color:#fff;
     padding: 0px;
     margin: 0px;
     }
     .drawer-avatar-div div p:nth-child(2){
-        color:#fff;
         font-size: 10px;
         }
 .drawer-mask{
@@ -768,18 +767,18 @@ Accordians
 }
 .collapsible .title{
     position: relative;
-    /* overflow: hidden; */
-margin: 0px;
-cursor: pointer;
-padding:5px 0px 5px 10px;
-width: auto;
-font-size: 15px;
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: space-between;
-text-align: center;
-/* background-color: #1B9A59 */
+    overflow: hidden;
+    margin: 0px;
+    cursor: pointer;
+    padding:25px 10px;
+    flex:1;
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* text-align: center; */
+    /* background-color: #1B9A59 */
 }
 .collapsible .content{
     padding:10px;
